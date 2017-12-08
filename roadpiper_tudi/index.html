@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    <title>Roadpiper Assignment</title>
+
+    <link rel="stylesheet"  href="css/bootstrap.min.css">
+    <link rel="stylesheet"  href="css/main.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Road<strong>Piper </strong>Assignment</a>
+  
+
+</nav>
+
+
+
+<div class="container " id="articles">
+<h4 ></h4>
+<p>By</p>
+<p></p>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "hacker_news_stories.json";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<h4 ><a href="' + arr[i].url + '">' + 
+        arr[i].title + '</a></h4><p> By ' + arr[i].by+ '</p><p><b> Type:</b>   ' + arr[i].type +  '</p><hr>';
+    }
+    document.getElementById("articles").innerHTML = out;
+}
+</script>
+
+</body>
+</html>
